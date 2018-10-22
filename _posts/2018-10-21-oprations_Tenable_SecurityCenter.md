@@ -19,7 +19,7 @@ tags: 安全工具
 
 ### 目录
 
-* [SC安装](#Where-to-go-from-here)
+* [SC安装](#sc-install)
 * [Nessus漏洞扫描器引擎安装](#Where-to-go-from-here)
 * [SC关联并授权Nessus漏洞扫描器](#Where-to-go-from-here)
 * [SC组织创建](#Where-to-go-from-here)
@@ -33,7 +33,7 @@ tags: 安全工具
 * [SC简单漏洞运营](#Where-to-go-from-here)
 
 
-### <a name="When-to-apply-neural-net"></a>SecurityCenter安装
+### <a name="sc-install"></a>SecurityCenter安装
 
 　　`SecurityCenter` 的安装包需要在[Tenable官方网站](https://www.tenable.com/downloads)进行下载, 由于方便运维团队进行自动化管理, 本文Tenable的运行环境为 `Centos 7.x` 或 `Centos 6.x`, 所以下载的SC安装包为rpm包。Tenable 官方将 `SC` 定位成一个漏洞数据集成管理中心, 它本身不具备主动扫描漏洞的能力, 所以下载SC安装包的同时还需要下载Nessus的rpm安装包, SC与Nessus是收费版软件要想使用必须先购买license, 购买了SC的license之后就可以直接对Nessus进行授权管理, 一个SC的license可以授权管理多少的Nessus这里就不多谈, 小伙伴们可以自己去了解。
 
