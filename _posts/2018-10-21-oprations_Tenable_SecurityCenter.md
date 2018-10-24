@@ -52,13 +52,13 @@ tags: 安全工具
 <div align="center">
 	<img src="/images/posts/tenable/sc_install_success.png" height="300" width="500">  
 </div>
-</br>
+
 * **Web管理界面**, 访问 `https://ip` 即可进入首次授权页面。
 
 <div align="center">
 	<img src="/images/posts/tenable/sc_accredit.png" height="300" width="500">  
 </div>
-</br>
+
 * **授权激活事项**, 上传license激活SC, 激活SC的同时需要使用激活码激活Nessus扫描器引擎, 否则SC只会给Nessus进行授权激活无法更新推送插件及策略, 登陆Nessus会提示插件没有更新。
 
 <div align="center">
@@ -79,17 +79,17 @@ tags: 安全工具
 <div align="center">
 	<img src="/images/posts/tenable/nessus-install.png" height="300" width="500">
 </div>
-</br>
+
 * **web管理界面**, 访问 `https://ip:8834` 进入 `Nessus` 初始化页面并设置登陆账号密码。
 
 <div align="center">
 	<img src="/images/posts/tenable/nessus_create_account.png" height="300" width="250">
 </div>
-</br>
+
 * **选择扫描器类型**, 在选择扫描器类型选择 `Managed by SecurityCenter` 使用 `SC` 来管理并授权 `Nessus`, 之后下一步等待初始化安装。
 
 <div align="center">
 	<img src="/images/posts/tenable/nessus_select_scanner_type.png" height="300" width="250">
 </div>
-</br>
+
 # 未完待续
