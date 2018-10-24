@@ -83,12 +83,12 @@ tags: 安全工具
 * **web管理界面**, 访问 `https://ip:8834` 进入 `Nessus` 初始化页面并设置登陆账号密码。
 
 <div align="center">
-	<img src="/images/posts/tenable/nessus_create_account.png" height="300" width="500">
+	<img src="/images/posts/tenable/nessus_create_account.png" height="300" width="250">
 </div>
 
 * **选择扫描器类型**, 在选择扫描器类型选择 `Managed by SecurityCenter` 使用 `SC` 来管理并授权 `Nessus`, 之后下一步等待初始化安装。
 
 <div align="center">
-	<img src="/images/posts/tenable/nessus_select_scanner_type.png" height="300" width="500">
+	<img src="/images/posts/tenable/nessus_select_scanner_type.png" height="300" width="250">
 </div>
 # 未完待续
