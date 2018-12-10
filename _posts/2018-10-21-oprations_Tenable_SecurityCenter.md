@@ -21,7 +21,7 @@ tags: 安全工具
 
 * [SC安装](#sc-install)
 * [Nessus漏洞扫描器引擎安装](#nessus-install)
-* [SC关联并授权Nessus漏洞扫描器](#Where-to-go-from-here)
+* [SC关联并授权Nessus漏洞扫描器](#sc-association-nessus)
 * [SC组织创建](#Where-to-go-from-here)
 * [SC数据仓库概念及区域性划分](#Where-to-go-from-here)
 * [SC扫描空间概念及区域性划分](#Where-to-go-from-here)
@@ -92,4 +92,8 @@ tags: 安全工具
 	<img src="/images/posts/tenable/nessus_select_scanner_type.png" height="300" width="250">
 </div>
 
-# 未完待续
+### <a name="sc-association-nessus"></a>SC关联并授权Nessus漏洞扫描器
+
+　　安装完成 `SC` 与 `Nessus` 之后为了联动需要将 `Nessus` 关联配置到SC的Nessus管理中心去才可以实现分布式的漏洞扫描检测与漏洞信息侦察。
+
+#未完待续
