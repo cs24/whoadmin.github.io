@@ -22,8 +22,8 @@ tags: 安全工具
 * [SC安装](#sc-install)
 * [Nessus漏洞扫描器引擎安装](#nessus-install)
 * [SC关联并授权Nessus漏洞扫描器](#sc-association-nessus)
-* [SC组织创建](#Where-to-go-from-here)
-* [SC数据仓库概念及区域性划分](#Where-to-go-from-here)
+* [SC组织创建](#sc-organization-create)
+* [SC数据仓库概念及区域性划分](#sc-repositories)
 * [SC扫描空间概念及区域性划分](#Where-to-go-from-here)
 * [SC资产管理](#Where-to-go-from-here)
 * [SC对Nessus漏洞扫描器的管理](#Where-to-go-from-here)
@@ -96,4 +96,33 @@ tags: 安全工具
 
 　　安装完成 `SC` 与 `Nessus` 之后为了联动需要将 `Nessus` 关联配置到SC的Nessus管理中心去才可以实现分布式的漏洞扫描检测与漏洞信息侦察。
 
-#未完待续
+* **Step 1** 使用系统管理员账号登陆 `SC`, 点击 Resources->Nessus Scanners 在Nessus管理界面进行配置
+<div align="center">
+	<img src="/images/posts/tenable/sc-association-nessus-addNessus.png" height="" width="800">
+</div>
+
+* **Step 2** 填写Nessus相关信息, `Name` 可以按照相关的业务领域进行规划命名, `Host` 为安装的 `Nessus` 扫描器的IP地址, `Port` 如果在安装 `Nessus` 时没有变更的话默认即可, `Authentication` 填写的是 `Nessus` 账号密码, `Active Scans` 也就是 `Nessus` 活动范围的配置需要根据SC组织及扫描空间的划分来进行关联匹配。详情请查看<a name="sc-organization-create"> SC扫描空间概念及区域性划分
+<div align="center">
+	<img src="/images/posts/tenable/sc-association-nessus.png" height="" width="800">
+</div>
+
+* **Step 3** 配置完成后提交, `SC` 会自动进行关联授权以及插件更新并推送到 `Nessus`.
+<div align="center">
+	<img src="/images/posts/tenable/sc-association-nessus-complete.png" height="" width="800">
+</div>
+
+### <a name="sc-organization-create"></a>SC组织创建
+
+　　`SC` 的组织个人理解为多个不同组件的集合体, 它的作用就是为了让 `SC` 所有组件更好的使用。要想正常使用SC的所有功能必须要先创建组织.
+
+* **Step 1** 使用系统管理员账号登陆 `SC`, 点击 Organizations->Add 添加组织.
+<div align="center">
+	<img src="/images/posts/tenable/sc-organizations-create.png" height="" width="800">
+</div>
+
+* **Step 2** `Name` 组织名称可按照实际的公司名或者团体名称进行命名, 包含地址、城市、邮件、电话等. `Scanning` 这里可以按照实际的业务规划来进行配置, 举个栗子: 假如xxx集团下属包含xxx个公司, 那么就可以使用该配置来对该下属公司的活动空间进行限制, 限制方式是以对该公司的网络结构以及规划来进行的. 这里为了举栗, 我选择 `Automatic Distribution Only` (自动分发), `Restricted Scan Ranges` 配置为 `0.0.0.0/0`, 其他配置项为了业务稳定可按需进行配置, 如ldap服务器等. `Analysis` 选项需要参考 **<a name="sc-repositories">SC数据仓库概念及区域性划分** 来配置, 主要配置还是需要参考业务领域的规划及划分进行选择。
+<div align="center">
+	<img src="/images/posts/tenable/sc-organizations-add.png" height="" width="800">
+</div>
+
+###未完待续
