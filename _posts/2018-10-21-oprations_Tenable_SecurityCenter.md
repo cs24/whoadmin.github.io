@@ -24,7 +24,7 @@ tags: 安全工具
 * [SC关联并授权Nessus漏洞扫描器](#sc-association-nessus)
 * [SC组织创建](#sc-organization-create)
 * [SC数据仓库概念及区域性划分](#sc-repositories)
-* [SC扫描空间概念及区域性划分](#Where-to-go-from-here)
+* [SC扫描空间概念及区域性划分](#sc-scanzone)
 * [SC资产管理](#Where-to-go-from-here)
 * [SC对Nessus漏洞扫描器的管理](#Where-to-go-from-here)
 * [SC安全基线](#Where-to-go-from-here)
@@ -113,16 +113,48 @@ tags: 安全工具
 
 ### <a name="sc-organization-create"></a>SC组织创建
 
-　　`SC` 的组织个人理解为多个不同组件的集合体, 它的作用就是为了让 `SC` 所有组件更好的使用。要想正常使用SC的所有功能必须要先创建组织.
+　　`SC` 的组织个人理解为多个不同组件的集合体, 它的作用就是为了让 `SC` 所有组件更好的交叉配合使用。要想正常使用SC的所有功能必须要先创建组织.
 
 * **Step 1** 使用系统管理员账号登陆 `SC`, 点击 Organizations->Add 添加组织.
 <div align="center">
 	<img src="/images/posts/tenable/sc-organizations-create.png" height="" width="800">
 </div>
 
-* **Step 2** `Name` 组织名称可按照实际的公司名或者团体名称进行命名, 包含地址、城市、邮件、电话等. `Scanning` 这里可以按照实际的业务规划来进行配置, 举个栗子: 假如xxx集团下属包含xxx个公司, 那么就可以使用该配置来对该下属公司的活动空间进行限制, 限制方式是以对该公司的网络结构以及规划来进行的. 这里为了举栗, 我选择 `Automatic Distribution Only` (自动分发), `Restricted Scan Ranges` 配置为 `0.0.0.0/0`, 其他配置项为了业务稳定可按需进行配置, 如ldap服务器等. `Analysis` 选项需要参考 **<a name="sc-repositories">SC数据仓库概念及区域性划分** 来配置, 主要配置还是需要参考业务领域的规划及划分进行选择。
+* **Step 2** `Name` 组织名称可按照实际的公司名或者团体名称进行命名, 包含地址、城市、邮件、电话等. `Scanning` 这里可以按照实际的业务规划来进行配置, 举个栗子: 假如xxx集团下属包含xxx个公司, 那么就可以使用该配置来对该下属公司的活动空间进行限制, 限制方式是以对该公司的网络结构以及规划来进行的. 这里为了举栗, 我选择 `Automatic Distribution Only` (自动分发), `Restricted Scan Ranges` 配置为 `0.0.0.0/0`, 其他配置项为了业务稳定可按需进行配置, 如ldap服务器等. `Analysis` 选项需要参考 **SC数据仓库概念及区域性划分** 来配置, 主要配置还是需要参考业务领域的规划及划分进行选择, 该选项可以使用领域划分或者功能性划分来进行选择配置, 需要对数据仓库以及扫描策略进行关联划分, 说简单点就是用于关联配置扫描策略的选项. `Custom Analysis Links` 与 `Vulnerability Weights` 可使用默认配置, 前者用于关联分析链接配置, 后者用于自定义漏洞权重. 配置完成提交即可.
 <div align="center">
 	<img src="/images/posts/tenable/sc-organizations-add.png" height="" width="800">
 </div>
+`Analysis`
+	<div align="center">
+		<img src="/images/posts/tenable/sc-organizations-add-2.png" height="" width="800">
+	</div>
+
+### <a name="sc-repositories"></a>SC数据仓库概念及区域性划分
+
+　　`SC` 的组织对企业资产进行了比较大范围的划分, 而数据仓库用于将这些资产进行更加精细化的划分梳理, 可以参考树形图, 它的主要作用是更加清晰明了对某个部门或者某个业务模块进行模块化配置, 当然如果一定要用它来配置更大的资产模块也是可行的, 可根据实际情况及项目规划来运维. 它还有一个更重要的作用是用来对资产进行重组划分, 之所以要进行这么精细划分的目的是因为可以有效防止企业网络规模过大且网络域、网段重叠的情况. 所以企业网络规划清晰明了且不具备重叠情况的话通常最多只需要创建2个数据仓库即可, 这里我将安全基线的检查与漏洞扫描进行区分创建了2个仓库, 按照业务领域增加了基地与总部的数据仓库(因为网络段重叠), 共计4个.
+<div align="center">
+	<img src="/images/posts/tenable/sc-repositories.png" height="" width="800">
+</div>
+
+* **Step 1** 点击Repositories-Add 增加数据仓库, 根据提示选择资产模式, 这里可以手动添加资产也可以按照资产模板进行导入, 这里选择添加IPV4仓库.
+<div align="center">
+	<img src="/images/posts/tenable/sc-repositories-add.png" height="" width="800">
+</div>
+
+* **Step 2** `Name` 的命名最好按照实际规划的业务领域进行命名, `Data` 为该xx部门或者业务进行活动范围限制这里也需要根据实际的网络划分来进行限制用于测试可以直接使用 `0.0.0.0/0`, `Access` 为仓库关联已经配置好的组织, `Advanced Settings` 这里选择默认, 如果有购买LCE服务可以填写, 配置完成后提交即可.
+<div align="center">
+	<img src="/images/posts/tenable/sc-repositories-add-2.png" height="" width="800">
+</div>
+
+### <a name="sc-scanzone"></a>SC扫描空间概念及区域性划分
+
+　　`scanzone` 主要是为 `Nessus` 扫描器的活动范围进行限制, 能更加精细化的控制某个系统或某个ip地址的工作将会由哪个 `Nessus` 扫描器进行工作.
+
+* **Step 1** 点击 `Resources->Scan Zones->Add` 进行添加扫描空间.
+<div align="center">
+	<img src="/images/posts/tenable/sc-scanzone-add.png" height="" width="800">
+</div>
+
+* **Step 2** `Name` 这里的名字可以按照实际的业务模块进行划分例如xx公司-xx领域或xx部门来进行命名, `Ranges` 为该业务部门或者领域设定活动范围以具体的网段划分来设置, `Scanners` 用于关联该领域或者业务部门的 `Nessus` 漏洞扫描器, 配置完成提交即可.
 
 ###未完待续
