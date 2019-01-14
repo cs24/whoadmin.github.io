@@ -187,7 +187,7 @@ tags: 安全工具
 </div>
 基线模板
 <div align="center">
-	<img src="/images/posts/tenable/sc-sec-baseline-Template.png" height="" width="800">
+	<img src="/images/posts/tenable/sc-sec-baseline-template.png" height="" width="800">
 </div>
 
 * **Step 1** 点击 `Scans->Audit Files-Add`将已经准备好的安全基线模板上传并命名. 基线模板可以直接使用CIS.
