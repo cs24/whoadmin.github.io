@@ -124,7 +124,6 @@ tags: 安全工具
 <div align="center">
 	<img src="/images/posts/tenable/sc-organizations-add.png" height="" width="800">
 </div>
-`Analysis`
 	<div align="center">
 		<img src="/images/posts/tenable/sc-organizations-add-2.png" height="" width="800">
 	</div>
