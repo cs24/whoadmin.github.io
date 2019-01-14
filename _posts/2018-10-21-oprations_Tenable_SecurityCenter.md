@@ -121,12 +121,14 @@ tags: 安全工具
 </div>
 
 * **Step 2** `Name` 组织名称可按照实际的公司名或者团体名称进行命名, 包含地址、城市、邮件、电话等. `Scanning` 这里可以按照实际的业务规划来进行配置, 举个栗子: 假如xxx集团下属包含xxx个公司, 那么就可以使用该配置来对该下属公司的活动空间进行限制, 限制方式是以对该公司的网络结构以及规划来进行的. 这里为了举栗, 我选择 `Automatic Distribution Only` (自动分发), `Restricted Scan Ranges` 配置为 `0.0.0.0/0`, 其他配置项为了业务稳定可按需进行配置, 如ldap服务器等. `Analysis` 选项需要参考 **SC数据仓库概念及区域性划分** 来配置, 主要配置还是需要参考业务领域的规划及划分进行选择, 该选项可以使用领域划分或者功能性划分来进行选择配置, 需要对数据仓库以及扫描策略进行关联划分, 说简单点就是用于关联配置扫描策略的选项. `Custom Analysis Links` 与 `Vulnerability Weights` 可使用默认配置, 前者用于关联分析链接配置, 后者用于自定义漏洞权重. 配置完成提交即可.
+
 <div align="center">
 	<img src="/images/posts/tenable/sc-organizations-add.png" height="" width="800">
 </div>
-	<div align="center">
-		<img src="/images/posts/tenable/sc-organizations-add-2.png" height="" width="800">
-	</div>
+
+<div align="center">
+	<img src="/images/posts/tenable/sc-organizations-add-2.png" height="" width="800">
+</div>
 
 ### <a name="sc-repositories"></a>SC数据仓库概念及区域性划分
 
