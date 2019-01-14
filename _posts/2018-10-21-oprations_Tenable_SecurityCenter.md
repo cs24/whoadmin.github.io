@@ -25,8 +25,7 @@ tags: 安全工具
 * [SC组织创建](#sc-organization-create)
 * [SC数据仓库概念及区域性划分](#sc-repositories)
 * [SC扫描空间概念及区域性划分](#sc-scanzone)
-* [SC资产管理](#Where-to-go-from-here)
-* [SC对Nessus漏洞扫描器的管理](#Where-to-go-from-here)
+* [SC资产管理](#sc-asset-manage)
 * [SC安全基线](#Where-to-go-from-here)
 * [SC漏洞扫描](#Where-to-go-from-here)
 * [SC仪表板](#Where-to-go-from-here)
@@ -156,6 +155,8 @@ tags: 安全工具
 	<img src="/images/posts/tenable/sc-scanzone-add.png" height="" width="800">
 </div>
 
-* **Step 2** `Name` 这里的名字可以按照实际的业务模块进行划分例如xx公司-xx领域或xx部门来进行命名, `Ranges` 为该业务部门或者领域设定活动范围以具体的网段划分来设置, `Scanners` 用于关联该领域或者业务部门的 `Nessus` 漏洞扫描器, 配置完成提交即可.
+* **Step 2** `Name` 这里的名字可以按照实际的业务模块进行划分例如xx公司-xx领域或xx部门来进行命名, `Ranges` 为该业务部门或者领域设定活动范围以具体的网段划分来设置, `Scanners` 用于关联该领域或者业务部门的 `Nessus` 漏洞扫描器, 配置完成提交即可, 注意: 配置完成到这里就可以将已经安装并授权的 `Nessus` 的扫描空间进行关联了详情请查看<a name="nessus-install"> Nessus安装
+
+### <a name="sc-asset-manage"></a>SC资产管理
 
 ###未完待续
