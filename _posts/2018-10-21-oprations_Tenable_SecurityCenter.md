@@ -26,8 +26,8 @@ tags: 安全工具
 * [SC数据仓库概念及区域性划分](#sc-repositories)
 * [SC扫描空间概念及区域性划分](#sc-scanzone)
 * [SC资产管理](#sc-asset-manage)
-* [SC安全基线](#Where-to-go-from-here)
-* [SC漏洞扫描](#Where-to-go-from-here)
+* [SC安全基线](#sc-sec-baseline)
+* [SC漏洞扫描](#sc-vulnerability-scanning)
 * [SC仪表板](#Where-to-go-from-here)
 * [SC简单漏洞运营](#Where-to-go-from-here)
 
@@ -158,5 +158,59 @@ tags: 安全工具
 * **Step 2** `Name` 这里的名字可以按照实际的业务模块进行划分例如xx公司-xx领域或xx部门来进行命名, `Ranges` 为该业务部门或者领域设定活动范围以具体的网段划分来设置, `Scanners` 用于关联该领域或者业务部门的 `Nessus` 漏洞扫描器, 配置完成提交即可, 注意: 配置完成到这里就可以将已经安装并授权的 `Nessus` 的扫描空间进行关联了详情请查看<a name="nessus-install"> Nessus安装
 
 ### <a name="sc-asset-manage"></a>SC资产管理
+　　整个漏洞中心 `SC` 的资产管理在整个项目中相当于上下文的作用, 对下给漏洞扫描引擎提供基础数据的支持, 对上给整个项目提供漏洞数据格式化展示、漏洞分析提供有效的数据, `SC` 的资产管理可以根据实际业务及IDC中心的规模进行动态管理. 在实际应用中比较常见的做法是直接通过 `CMDB` 与 `SC` 进行动态关联或直接按照网络规划的网段进行管理, 前者能有效的进行服务器登陆检测、安全配置检测, 后者可以全面探测资产存活、资产漏洞等. 注意: 为了更加顺畅并高效的使用 `SC` 这里将账号权限做了一个比较明确的定义及使用规范, `admin` 账号用于管理整个系统层面的功能及资源如 `Nessus` 扫描器的管理、业务领域的划分、扫描空间定义等, `admin` 账号的权限作为最高级别的父级权限, 使用 `admin` 账号创建一个二级权限用于 `漏洞扫描`、`漏洞数据分析`、`资产管理`、`漏洞仪表板`、`漏洞格式化报表` 等功能的账号, 到这里权限分级及分类管理就基本实现.
 
+<div align="center">
+	<img src="/images/posts/tenable/sc-asset-manage.png" height="" width="800">
+</div>
+
+* **Step 1** 使用二级权限账号登陆, 点击 `Assets->Add` 来增加资产. `Tenable` 提供了大量常见的资产模板, `Templates` 中的各个资产模板需要到 `Tenable` 进行查询使用, 这里我常用的是 `Custom` 列表中的资产模板 `Static IP List`、`DNS Name List`、`Combination`.
+`Static IP List` 主要用于管理配置静态的IP资产, `DNS Name List`用于管理配置域名资产, `Combination` 用于组合具有相同属性及特征的静态资产并能以统一的方式进行展示.
+<div align="center">
+	<img src="/images/posts/tenable/sc-asset-add.png" height="" width="800">
+</div>
+
+* **Step 2** 点击 `Static IP List` 增加静态资产, 关于静态IP资产的增加建议从 `CMDB` 中进行关联同步.
+<div align="center">
+	<img src="/images/posts/tenable/sc-asset-add-2.png" height="" width="800">
+</div>
+
+* **Step 3** 点击 `Combination` 可以对静态资产列表进行重新组合定义，组合关键字 `AND`、`OR`，在`CMDB` 中对资产规划不明确的情况下使用组合资产可以对静态资产所属进行重新规划编排.
+<div align="center">
+	<img src="/images/posts/tenable/sc-asset-Combination.png" height="" width="800">
+</div>
+
+### <a name="sc-sec-baseline"></a>SC安全基线
+　　`Tenable` 官方提供了大量的安全基线标准模板涵盖了网络设备、操作系统、中间件、数据库等软件与硬件, 基线模板标准如等保、CIS. 除了使用官方标准的安全基线模板, 也可以根据企业实际的检测标准来自定义基线检查标准, 在 `SC` 中所有的基线文件都使用xml格式定义检查项, 官方也提供了编写基线模板的例子详情可到 `Tenable` 官方进行查询. 基线检测的前提必须有资产的登陆认证, 所以该检查配置项与 `CMDB` 的关联更加重要.
+<div align="center">
+	<img src="/images/posts/tenable/sc-sec-baseline.png" height="" width="800">
+</div>
+基线模板
+<div align="center">
+	<img src="/images/posts/tenable/sc-sec-baseline-Template.png" height="" width="800">
+</div>
+
+* **Step 1** 点击 `Scans->Audit Files-Add`将已经准备好的安全基线模板上传并命名. 基线模板可以直接使用CIS.
+<div align="center">
+	<img src="/images/posts/tenable/sc-sec-baseline-auditfile.png" height="" width="800">
+</div>
+
+* **Step 2** 点击 `Scans->Policies-Add`添加扫描策略，`Tenable` 提供了影响力巨大的多个漏洞扫描检测策略其中包含了 `WannaCry`、`GHOST`等等, 这里使用的是 `Policy Compliance Auditing` 进行基线扫描策略配置, 基线扫描根据操作系统类型进行配置.
+<div align="center">
+	<img src="/images/posts/tenable/sc-policy-add.png" height="" width="800">
+</div>
+
+* **Step 3** 基线扫描策略建议按照一定规范命名方便建立扫描任务时进行关联策略, 策略命名后将准备好的基线模板进行关联.
+<div align="center">
+	<img src="/images/posts/tenable/sc-sec-baseline-add-2.png" height="" width="800">
+</div>
+关联模板
+<div align="center">
+	<img src="/images/posts/tenable/sc-sec-baseline-policy.png" height="" width="800">
+</div>
+
+* **Step 4** 配置并关联完成基线策略之后最重要的操作就是增加资产的登陆凭证，点击 `Scans->Credentails-Add`增加登陆认证, 登陆凭证必须与扫描的资产相对应.
+<div align="center">
+	<img src="/images/posts/tenable/sc-sec-baseline-credentials.png" height="" width="800">
+</div>
 ###未完待续
