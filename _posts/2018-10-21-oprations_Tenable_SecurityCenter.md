@@ -28,8 +28,8 @@ tags: 安全工具
 * [SC资产管理](#sc-asset-manage)
 * [SC安全基线](#sc-sec-baseline)
 * [SC漏洞扫描](#sc-vulnerability-scanning)
-* [SC仪表板](#Where-to-go-from-here)
-* [SC简单漏洞运营](#Where-to-go-from-here)
+* [SC仪表板](#sc-dashboard)
+* [SC简单漏洞运营](#sc-vulnerability-operating)
 
 
 ### <a name="sc-install"></a>SecurityCenter安装
@@ -213,4 +213,60 @@ tags: 安全工具
 <div align="center">
 	<img src="/images/posts/tenable/sc-sec-baseline-credentials.png" height="" width="800">
 </div>
+
+### <a name="sc-vulnerability-scanning"></a>SC漏洞扫描
+　　以上前置配置完成即可使用SC进行漏洞扫描任务的创建及漏洞结果的输出、漏洞数据的分析管理, `SC` 的漏洞扫描任务的创建等同于 `Nessus`, 创建扫描任务时按照字段填充或选择之前配置好的扫描策略及登陆凭证即可, 如果不需要扫描安全基线可不配置 `Credentail` 且扫描策略不能使用基线扫描策略.
+
+* **Step 1** General, 可设置漏洞扫描策略, 定时任务等
+<div align="center">
+	<img src="/images/posts/tenable/sc-scan-general.png" height="" width="">
+</div>
+
+* **Step 2** Settings, 配置漏洞数据仓库, 导入漏洞扫描结果等
+<div align="center">
+	<img src="/images/posts/tenable/sc-scan-settings.png" height="" width="">
+</div>
+
+* **Step 3** Targets, 扫描目标
+<div align="center">
+	<img src="/images/posts/tenable/sc-scan-targets.png" height="" width="">
+</div>
+
+* **Step 4** Credentail, 登陆凭证
+<div align="center">
+	<img src="/images/posts/tenable/sc-scan-credential.png" height="" width="">
+</div>
+
+* **Step 5** Post Scan, 扫描成功后运行, 通常用于生成漏洞报告等.
+<div align="center">
+	<img src="/images/posts/tenable/sc-scan-postscan.png" height="" width="">
+</div>
+
+### <a name="sc-dashboard"></a>SC仪表板
+　　`dashboard` 相信不用多说也知道它的功能, 它用于漏洞数据可视化、漏洞视图等功能.  关于 `dashboard` 官方也提供了详细的模板配置也可以根据自身需求自定义 `dashboard`, 可定制化程度比较高, 最简单的定制方式便是套用官方的 `dashboard` 模板根据自身需求进行更改.
+<div align="center">
+	<img src="/images/posts/tenable/sc-dashboard.png" height="" width="">
+</div>
+
+* **90天累计漏洞总量趋势图**
+<div align="center">
+	<img src="/images/posts/tenable/sc-dashboard-90day-view.png" height="" width="">
+</div>
+* **累计可利用漏洞**
+<div align="center">
+	<img src="/images/posts/tenable/sc-dashboard-available.png" height="" width="">
+</div>
+* **90天累计极度风险漏洞趋势图**
+<div align="center">
+	<img src="/images/posts/tenable/sc-dashboard-dangerous.png" height="" width="">
+</div>
+* **漏洞修复情况统计表(高危及以上)**
+<div align="center">
+	<img src="/images/posts/tenable/sc-dashboard-repair.png" height="" width="">
+</div>
+* **应用资产统计（扫描+流量+日志)**
+<div align="center">
+	<img src="/images/posts/tenable/sc-dashboard-statistical.png" height="" width="">
+</div>
+以上展示的仪表板视图是按照官方提供的最佳实践视图更改.
 ###未完待续
